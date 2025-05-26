@@ -1,13 +1,22 @@
 import uvicorn
 from fastapi import FastAPI
-from BankNotes import BankNote
+from pydantic import BaseModel
 import numpy as np
 import pickle
 import pandas as pd
+from fastapi.middleware.cors import CORSMiddleware
 # 2. Create the app object
 app = FastAPI()
 pickle_in = open("classifier.pkl","rb")
 classifier=pickle.load(pickle_in)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # For production, specify domains instead of "*"
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # 3. Index route, opens automatically on http://127.0.0.1:8000
 # @app.get('/')
