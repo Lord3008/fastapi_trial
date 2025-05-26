@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import numpy as np
 import pickle
+from BankNotes import BankNote
 import pandas as pd
 from fastapi.middleware.cors import CORSMiddleware
 # 2. Create the app object
